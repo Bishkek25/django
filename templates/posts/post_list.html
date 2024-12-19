@@ -1,0 +1,19 @@
+{%extends 'base.html'%}
+{%load static%}
+{%block content%}
+{%for post in posts%}
+<div class="card" style="width: 18rem;">
+{%if post.image%}
+  <img src="{{post.image.url}}" class="card-img-top" alt="...">
+  {%else%}
+  <img src="" class="card-img-top" alt="...">
+  {%endif%}
+  <div class="card-body">
+    <h5 class="card-title">{{post.title}}</h5>
+    <p class="card-text" style="color: aqua;">{{post.description}}</p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+  </div>
+</div>
+{%endfor%}
+{%endblock%}
+
