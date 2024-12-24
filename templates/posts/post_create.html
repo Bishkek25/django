@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<form action="" method="post" enctype="multipart/form-data">
+    {%csrf_token%}
+<!--    {{form.as_p}}-->
+<!--    <button type="submit">Create post</button>-->
+<!--    <label for="image">Image</label>-->
+<!--    <p></p>-->
+<!--    <input type="file" name="image">-->
+    <p>
+    <lable for="title">Title</lable>
+    </p>
+    <input type="text" name="imya">
+    <p>
+        <lable for="description">description</lable>
+    </p>
+    <input type="text" name="famyliya">
+    <p></p>
+    <button type="submit">Create post</button>
+
+</form>
+
+{%endblock%}

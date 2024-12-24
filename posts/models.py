@@ -3,7 +3,10 @@ from tkinter.constants import CASCADE
 from django.db import models
 
 '''
-posts = Posts.objects.all() 
+posts = Posts.objects.all() SELECT * FROM posts
+posts = Posts.objects.get(id=1) SELECT DISTINCT FROM POSTS WHERE id=1
+posts = Posts.objects.filter(name="a")
+posts = Posts.objects.create(title="a", description="b", rate=3)
 '''
 
 class Category(models.Model):
