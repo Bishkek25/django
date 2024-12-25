@@ -31,6 +31,6 @@ class Post(models.Model):
     updated = models.DateTimeField(auto_now=True, null=True)
     image = models.ImageField(null=True, blank=True)
 
-def __str__(self):
+    def __str__(self):
         return f"{self.title}: {self.description}"
 
