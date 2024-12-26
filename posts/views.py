@@ -36,7 +36,7 @@ def main_view(request):
 def post_list_view(request):
     if request.method == "GET":
         limit = 4
-        page = request.GET.get('page', 1)
+        page = int(request.GET.get('page', 1))
         search = request.GET.get("search")
         category = request.GET.get("category")
         form = SearchForm(request.GET)
@@ -46,13 +46,12 @@ def post_list_view(request):
         if category:
             posts = posts.filter(category_id=category)
         if orderings:
-            post = posts.order_by(orderings)
+         post = posts.order_by(orderings)
         max_page = posts.count() / limit
         if round(max_page) < max_page:
             max_page = round(max_page) + 1
         else:
             max_page = round(max_page)
-
         start = (page - 1) * limit
         end = page * limit
         posts = posts[start:end]
