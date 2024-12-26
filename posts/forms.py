@@ -1,5 +1,6 @@
 from django import forms
-from django.template.defaultfilters import title
+
+from posts.models import Category
 
 
 class PostForm(forms.Form):
@@ -35,3 +36,28 @@ class PostForm(forms.Form):
         if len(description) < 3:
             raise forms.ValidationError("Description must be at least 3 characters")
         return description
+
+class SearchForm(forms.Form):
+     search = forms.CharField(
+           required=False,
+         max_length=100,
+         widget=forms.TextInput(attrs={"placeholder": "Поиск",'class': 'form-control'}),
+)
+
+Category = forms.ModelChoiceField(
+    queryset=Category.objects.all(),
+    required=False,
+    widget=forms.Select(attrs={"class": "form-control"}),
+)
+orderings = (
+        ("created_at", "По дате создания"),
+        ("updated_at", "По дате изменения"),
+        ("rate", "По оценке"),
+        ("-created_at", "По дате создания по убыванию"),
+        ("-updated_at", "По дате изменения по убыванию"),
+        ("-rate", "По оценке по убыванию"),
+
+)
+orderings = forms.ChoiceField(
+    choices=orderings, required=False, widget=forms.Select(attrs={"class": "form-control"}),
+)

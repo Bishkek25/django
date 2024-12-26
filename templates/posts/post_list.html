@@ -1,6 +1,10 @@
 {%extends 'base.html'%}
-{%load static%}
+<!--{%load static%}-->
 {%block content%}
+<form action="/post/" method="get", enctype="multipart/form-data">
+  {{form.as_p}}
+  <button type="submit">Search</button>
+</form>
 {%for post in posts%}
 <div class="card" style="width: 18rem;">
 {%if post.image%}
@@ -15,5 +19,6 @@
   </div>
 </div>
 {%endfor%}
+</div>
 {%endblock%}
 
