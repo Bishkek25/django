@@ -5,6 +5,8 @@ from posts.models import Post
 from posts.forms import PostForm
 
 
+
+
 def hello_view ():
     return HttpResponse(f"Hello World {random.randint(1, 100)}")
 
@@ -15,17 +17,19 @@ def main_view(request):
     if request.method == "GET":
       return render(request, 'base.html')
 
+# @Login_required(login_url="login-view")
 def post_list_view(request):
     if request.method == "GET":
       posts = Post.objects.all()
       return render(request,"posts/post_list.html", context={"posts":posts})
 
+# @Login_required(login_url="login-view")
 def post_detail_view(request, id):
     if request.method == "GET":
       post = Post.objects.get(id=id)
       return render(request,"posts/post_detail.html", context={"post":post})
 
-
+# @Login_required(login_url="login-view")
 def post_create_view(request):
     if request.method == "GET":
         form = PostForm()
