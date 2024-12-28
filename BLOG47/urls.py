@@ -24,7 +24,7 @@ from posts.views import (hello_view,
                          post_detail_view,
                          post_create_view)
 
-from user.views import register_view, login_view, logout_view
+from user.views import register_view, login_view, logout_view, Profile_view
 from user.views import register_view
 from django.conf.urls.static import static
 from django.conf import settings
@@ -39,7 +39,8 @@ urlpatterns = [
     path("posts/create/", post_create_view),
     path("register/", register_view),
     path("login/", login_view, name="login-view"),
-    path("logout/", logout_view, name="logout-view")
+    path("logout/", logout_view, name="logout-view"),
+    path("profile/", Profile_view, name="profile-view"),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -1,19 +1,18 @@
 from django import forms
 from django.contrib.auth.forms import User
-
 from django.contrib.auth.password_validation import password_changed
 from django.db.models.fields import return_None
 
 
 class RegisterForm(forms.ModelForm):
     password_confirm = forms.CharField(required=True)
-    # age = forms.IntegerField()
-    # image = forms.ImageField()
+    age = forms.IntegerField()
+    image = forms.ImageField()
 
 
     class Meta:
         model = User
-        fields = ["username", "password", "password_confirm"]
+        fields = ["image", "username", "age", "password", "password_confirm"]
 
     def clean (self):
         cleaned_data = super().clean()
